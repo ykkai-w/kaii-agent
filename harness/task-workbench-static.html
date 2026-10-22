@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kaii · 任务与结果静态视觉检查</title>
+    <link rel="stylesheet" href="./task-workbench-harness.css" />
+    <link rel="stylesheet" href="../src/task-workbench.css" />
+  </head>
+  <body>
+    <main class="harness-page">
+      <div class="harness-toolbar"><strong>任务与结果 · 静态视觉检查</strong><span>不启动 Electron / 模型</span></div>
+      <div class="task-workbench-backdrop">
+        <div class="task-workbench-dialog" role="dialog" aria-modal="true" aria-label="任务与结果视觉检查">
+          <section class="task-workbench has-close" aria-label="任务与结果">
+            <button class="task-workbench-close" type="button" aria-label="关闭任务与结果">×</button>
+
+            <aside class="privacy-preview" role="alert">
+              <div class="privacy-preview-icon">↗</div>
+              <div class="privacy-preview-copy">
+                <span class="workbench-kicker">发送预览</span>
+                <h3>这些内容将发送到 GLM</h3>
+                <p>下面逐字展示对话和项目文字；附件正文不在本预览中。</p>
+                <ul><li>历史消息 4 条</li><li>项目说明 1 条</li><li>附件 1 份（仅显示名称与规模）</li></ul>
+                <pre class="privacy-payload">[项目说明]
+只比较正式发布材料。
+
+[问题]
+请核对这份材料里的日期与适用范围。</pre>
+                <strong class="privacy-warning">附件正文尚未逐字预览，也未经过本页的密钥和个人信息扫描。</strong>
+              </div>
+              <div class="privacy-preview-actions"><button type="button">取消</button><button type="button" class="primary">确认发送</button></div>
+            </aside>
+
+            <nav class="task-workbench-entries" aria-label="开始一项任务">
+              <button class="is-active" type="button"><span aria-hidden="true">✦</span><span><strong>直接问</strong><small>得到一个清楚答案</small></span></button>
+              <button type="button"><span aria-hidden="true">▤</span><span><strong>分析材料</strong><small>读文件，留下依据</small></span></button>
+              <button type="button"><span aria-hidden="true">⌁</span><span><strong>自动 / 批量</strong><small>交给它做完再回来</small></span></button>
+            </nav>
+
+            <div class="task-workbench-status" aria-label="任务状态">
+              <span class="task-pill task-pill-running"><i></i><b>核对政策材料</b><small>读取第 4 份</small></span>
+              <span class="task-pill task-pill-waiting"><i></i><b>云端风险分析</b><small>等待确认</small></span>
+              <span class="task-pill task-pill-done"><i></i><b>整理会议纪要</b><small>已留回执</small></span>
+            </div>
+
+            <div class="task-workbench-grid">
+              <aside class="result-inbox">
+                <header><div><span class="workbench-kicker">RESULT INBOX</span><h2>结果收件箱</h2></div><small>2 份</small></header>
+                <div class="result-inbox-list">
+                  <button class="is-selected" type="button" aria-pressed="true">
+                    <span class="result-card-head"><strong>政策材料核对</strong><time>11:42</time></span>
+                    <span class="result-card-conclusion">三份材料的适用范围一致，但第二份的发布日期早于最终修订版。</span>
+                    <span class="result-card-meta"><span class="location-mixed">本机 + 云端</span><span class="verify-verified">已核对</span></span>
+                  </button>
+                  <button type="button" aria-pressed="false">
+                    <span class="result-card-head"><strong>会议纪要整理</strong><time>10:18</time></span>
+                    <span class="result-card-conclusion">形成 3 项决定、2 个待办和 1 个仍需确认的问题。</span>
+                    <span class="result-card-meta"><span class="location-local">仅本机</span><span class="verify-needs-review">待复核</span></span>
+                  </button>
+                </div>
+              </aside>
+
+              <article class="work-page">
+                <header class="work-page-head"><div><span class="workbench-kicker">WORK PAGE</span><h2>政策材料核对</h2></div><span class="work-page-verification verify-verified">✓ 已核对</span></header>
+                <p class="work-page-lead">三份材料的适用范围一致，但第二份的发布日期早于最终修订版。</p>
+                <p class="work-page-body">已按发布日期和发布机构交叉核对。建议引用最终修订版，并保留旧版作为变更依据。</p>
+                <div class="work-page-actions">
+                  <button class="primary" type="button">继续追问</button><button type="button">准备重试</button><button type="button">打开项目…</button><button type="button">放到输入区</button><button type="button">导出证据</button><button type="button">复制</button>
+                </div>
+                <section class="memory-evidence">
+                  <button type="button"><span><strong>依据是什么</strong><small>2 条可质证来源</small></span><span>⌄</span></button>
+                  <ul>
+                    <li><span>文件</span><div><strong>最终修订版.pdf</strong><small>本机文件</small></div></li>
+                    <li><span>网页</span><div><strong>发布机构公告</strong><small>官网</small></div></li>
+                  </ul>
+                </section>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

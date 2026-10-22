@@ -1,0 +1,90 @@
+{
+  "name": "kaii-agent",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "description": "A local-first AI task workbench for macOS.",
+  "main": "electron/main.cjs",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && electron . --dev\"",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "desktop": "electron .",
+    "harness": "vite --config harness/vite.config.ts",
+    "harness:workbench": "vite --config harness/vite.task.config.ts",
+    "test": "npm run test:main && npm run test:renderer && npm run test:native && npm run test:package",
+    "test:main": "node scripts/test-main.cjs",
+    "test:renderer": "node --experimental-strip-types --test --test-concurrency=1 tests/renderer/storage.test.mjs tests/renderer/restore-transaction.test.mjs tests/renderer/task-capsule.test.mjs tests/renderer/task-store.test.mjs tests/renderer/task-workbench.test.mjs tests/renderer/chat-layout.test.mjs tests/renderer/palette-prompts-backup.test.mjs tests/renderer/chart.test.mjs tests/renderer/export-document.test.mjs tests/renderer/math-toolbar.test.mjs tests/renderer/usage-export.test.mjs tests/renderer/batch-thirty.test.mjs tests/renderer/composer.test.mjs tests/renderer/outline-table.test.mjs tests/renderer/organize.test.mjs tests/renderer/instant.test.mjs tests/renderer/import-chatgpt.test.mjs tests/renderer/onboarding.test.mjs tests/renderer/public-copy.test.mjs tests/renderer/settings-copy.test.mjs",
+    "build:native": "bash scripts/build-vision-helper.sh",
+    "test:native": "npm run build:native && bash tests/native/vision-helper.test.sh && bash tests/native/doc-helper.test.sh && bash tests/native/speech-helper.test.sh",
+    "test:package": "npm run build && npm run build:native && node --test tests/package/build-artifacts.test.cjs",
+    "audit:public": "node scripts/audit-public-release.cjs",
+    "package:mac": "npm test && npm run build:native && electron-builder --mac dir",
+    "package:dmg": "npm test && npm run build:native && electron-builder --mac dmg"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "6.0.5",
+    "highlight.js": "^11.11.1",
+    "katex": "^0.18.4",
+    "lucide-react": "1.31.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-markdown": "10.1.0",
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "4.0.1",
+    "remark-math": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "concurrently": "10.0.4",
+    "electron": "43.3.0",
+    "electron-builder": "26.15.3",
+    "typescript": "7.0.2",
+    "vite": "8.2.1",
+    "wait-on": "9.1.0"
+  },
+  "build": {
+    "appId": "io.github.ykkaiw.kaii",
+    "productName": "kaii-agent",
+    "asar": true,
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "!electron/lib/dmr*",
+      "resources/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/bin/kaii-vision",
+        "to": "bin/kaii-vision"
+      },
+      {
+        "from": "resources/bin/kaii-doc",
+        "to": "bin/kaii-doc"
+      },
+      {
+        "from": "resources/bin/kaii-speech",
+        "to": "bin/kaii-speech"
+      },
+      {
+        "from": "resources/tray",
+        "to": "tray"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "resources/kaii.icns",
+      "target": [
+        "dir",
+        "dmg"
+      ],
+      "artifactName": "kaii-agent-${version}-${arch}.${ext}"
+    },
+    "directories": {
+      "output": "release"
+    }
+  }
+}

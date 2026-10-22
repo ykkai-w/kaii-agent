@@ -1,0 +1,50 @@
+# 依赖与构建产物
+node_modules/
+dist/
+release/
+*.tsbuildinfo
+coverage/
+.vite/
+__pycache__/
+*.py[cod]
+
+# 本机构建的原生 helper。公共源码保留 native/*.swift，二进制由本机重建。
+resources/bin/
+
+# 模型、数据库和凭据绝不进入源码仓库
+*.gguf
+*.safetensors
+*.pt
+*.pth
+*.onnx
+*.pkl
+*.pickle
+*.sqlite
+*.sqlite3
+*.db
+.env
+.env.*
+!.env.example
+credentials.json
+.npmrc
+*.pem
+*.key
+*.p12
+*.mobileprovision
+/data/
+/backups/
+*.cache
+*.tmp
+
+# 本地开发杂物
+.DS_Store
+*.log
+/index--*.js
+.claude/
+
+# 交接快照（含本机环境细节，不进公开仓库）
+HANDOVER-*.md
+
+# 与应用无关的研究/设计资产
+research/
+design/

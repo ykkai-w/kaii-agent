@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title">
+  <title id="title">一个圆环与一道闪电组成的 kaii 标志</title>
+  <rect x="40" y="40" width="920" height="920" rx="200" fill="#6A9BCC"/>
+
+  <!-- 米白层故意向右下错位，保留纸上套印不准的手感。 -->
+  <g fill="#FAF9F5" transform="translate(12 9)" aria-hidden="true">
+    <path data-part="bolt-carrier" d="M613 267L704 328L626 403L691 443L456 535L500 446L423 410L512 338Z"/>
+    <path data-part="circle-carrier" fill-rule="evenodd" d="M374 502C438 502 486 552 489 618C492 685 440 736 374 739C308 739 256 690 254 623C252 556 306 505 374 502ZM373 571C402 570 422 591 423 621C424 652 403 673 372 674C341 675 320 653 319 622C318 591 341 571 373 571Z"/>
+  </g>
+
+  <!-- 单一锚点：闪电的尖端只轻触圆环外缘，不越过轮廓。 -->
+  <g fill="#141413">
+    <path data-part="bolt-ink" d="M613 267L704 328L626 403L691 443L456 535L500 446L423 410L512 338Z"/>
+    <path data-part="circle-ink" fill-rule="evenodd" d="M374 502C438 502 486 552 489 618C492 685 440 736 374 739C308 739 256 690 254 623C252 556 306 505 374 502ZM373 571C402 570 422 591 423 621C424 652 403 673 372 674C341 675 320 653 319 622C318 591 341 571 373 571Z"/>
+  </g>
+</svg>
